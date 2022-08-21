@@ -22,5 +22,6 @@
     "certificates" : "Certificates",
     "certificateName" : "Certificate Name",
     "certificateDate" : "Certificate Date",
-    "close" : "Close"
+    "close" : "Close",
+    "grandTotal" : "Grand Total"
 }

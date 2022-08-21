@@ -22,5 +22,6 @@
     "certificates" : "Certificados",
     "certificateName" : "Nome Válido",
     "certificateDate" : "Data do certificado",
-    "close" : "Perto"
+    "close" : "Perto",
+    "grandTotal" : "Total Geral"
 }

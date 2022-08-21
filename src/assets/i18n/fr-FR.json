@@ -22,5 +22,6 @@
     "certificates" : "Certificats",
     "certificateName" : "Nom du certificat",
     "certificateDate" : "Date du certificat",
-    "close" : "Proche"
+    "close" : "Proche",
+    "grandTotal" : "Total"
 }
