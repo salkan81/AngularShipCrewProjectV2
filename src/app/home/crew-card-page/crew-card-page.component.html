@@ -1,23 +1,29 @@
 
 <div class="container">
-    <h1 style="text-align:center ;">Crew Details</h1>
-    <table class="table">
+  <div class="w-100 text-center mb-5 mt-5"><h1>{{'crewdetails' | translate}}</h1></div>
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Title</th>
-        <th scope="col">Nationality</th>
+        <th scope="col">{{'firstName' | translate}}</th>
+        <th scope="col">{{'lastName' | translate}}</th>
+        <th scope="col">{{'nationality' | translate}}</th>
+        <th scope="col">{{'title' | translate}}</th>
+        <th scope="col">{{'daysOnBoard' | translate}}</th>
+        <th scope="col">{{'dailyRate' | translate}}</th>
+        <th scope="col">{{'currency' | translate}}</th>
+        <th scope="col">{{'totalIncome' | translate}}</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
       <tr>
-        <td>{{crew.Id}}</td>
         <td>{{crew.FirstName}}</td>
         <td>{{crew.LastName}}</td>
         <td>{{crew.Title}}</td>
         <td>{{crew.Nationality}}</td>
+        <td>{{crew.DaysOnBoard}}</td>
+        <td>{{crew.DailyRate}}</td>
+        <td>{{crew.Currency}}</td>
+        <td>{{crew.TotalIncome}}</td>
       </tr>
     </tbody>
   </table>

@@ -1,12 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import { Crew } from "src/app/Crew";
 import { DataService } from "src/app/services/data.service";
-
-
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
+import { AddPopUpComponent } from "./add-pop-up/add-pop-up.component";
 
 @Component({
   selector: 'app-home-page',
@@ -16,6 +12,7 @@ export interface DialogData {
 export class HomePageComponent implements OnInit {
   
   crewList:Crew[];
+  crew!:Crew;
 
   constructor(public dialog:MatDialog,private service:DataService) {
     this.crewList=service.crewList
@@ -25,11 +22,19 @@ export class HomePageComponent implements OnInit {
     this.dialog.open(CertPopUpComponent,{data: {id: crewId}});
   }
 
+  AddCrewDialog(Crew: Crew) {
+    this.dialog.open(AddPopUpComponent,{data: {Crew: Crew}});
+  }
+
   deleteCrew(key: number){
     return this.service.deleteCrew(key)
   }
 
   ngOnInit(): void {
+  }
+
+  onCreate(){
+  this.dialog.open(AddPopUpComponent);
   }
   
 }

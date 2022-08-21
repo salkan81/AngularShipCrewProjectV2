@@ -1,0 +1,72 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Employee Form</h4>
+        <button type="button" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="crewForm" (ngSubmit)="SaveCrew()">
+            <div class="mb-3">
+                <label>Code</label>
+                <div class="input-group">
+                    <input name="code" class="form-control" formControlName="id">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Name</label>
+                <div class="input-group">
+                    <input name="firstName" class="form-control" formControlName="firstName">
+                </div>
+                <!-- <span *ngIf="name && name.invalid" class="errormessage">Please Enter valid name</span> -->
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <div class="input-group">
+                    <input name="lastName" class="form-control" formControlName="lastName">
+                </div>
+                <!-- <span *ngIf="email && email.invalid" class="errormessage">Please Enter valid email</span> -->
+            </div>
+            <div class="mb-3">
+                <label>Phone</label>
+                <div class="input-group">
+                    <input name="title" class="form-control" formControlName="title">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label>Phone</label>
+                <div class="input-group">
+                    <input name="nationality" class="form-control" formControlName="nationality">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Phone</label>
+                <div class="input-group">
+                    <input name="certificateName" class="form-control" formControlName="certificateName">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Phone</label>
+                <div class="input-group">
+                    <input name="certificateDate" class="form-control" formControlName="certificateDate">
+                </div>
+            </div>
+
+            <div class="mb-3">
+
+                <div class="input-group">
+                    <button  type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button style="display: none;" type="button" class="btn btn-outline-dark"
+            (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
+
+<!-- <button class="btn btn-primary" #popupbtn id="popupbtn" (click)="open()">Add New</button> -->
+
+<hr>
+
+<pre></pre>

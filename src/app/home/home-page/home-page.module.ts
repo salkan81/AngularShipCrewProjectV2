@@ -3,7 +3,16 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CertPopUpComponent, HomePageComponent } from './home-page.component';
 import { CrewCardPageModule } from '../crew-card-page/crew-card-page.module';
+import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
+import {MatButtonModule} from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http,'../assets/i18n/','.json');
+}
 const routes: Routes = [
   {
     path: '',
@@ -12,9 +21,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomePageComponent, CertPopUpComponent],
+  declarations: [HomePageComponent, CertPopUpComponent, AddPopUpComponent],
   imports: [
-    CommonModule,RouterModule.forChild(routes),CrewCardPageModule
+    CommonModule,RouterModule.forChild(routes),CrewCardPageModule,MatButtonModule,ReactiveFormsModule,HttpClientModule,TranslateModule.forRoot({
+      defaultLanguage: 'en-US',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps : [HttpClient]
+      }
+    })
   ],
   exports:[HomePageComponent]
 })

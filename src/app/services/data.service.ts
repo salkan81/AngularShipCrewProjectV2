@@ -14,9 +14,41 @@ export class DataService {
   getCrewList():Crew[]
   {
     return [
-      new Crew(1,"Serkan","Alkan","Turkey","1st Captain",[{name: "Certificate1", date:"May 2017"},{name: "Certificate2", date:"May 2016"}]),
-      new Crew(2,"Erkan","Alkan","Turkey","2nd Captain",[{name: "Certificate3", date:"May 2018"},{name: "Certificate4", date:"May 2019"}]),
-      new Crew(3,"Atakan","Alkan","Turkey","3rd Captain",[{name: "Certificate5", date:"May 2020"},{name: "Certificate6", date:"May 2021"}])
+      new Crew(1,"Katheryn","Winnick","Canada","1st Captain",25,200,"EUR",5000,
+      [{name: "Continuous Discharge Certificate", date:"May 2014"},
+       {name: "Indian Database of Seafarers", date:"Aug 2015"},
+       {name: "National Certificate of Compatence and endrosement", date:"Oct 2015"},
+       {name: "Flag State Endorsement of Recognition", date:"Feb 2016"},
+       {name: "Medical First Aid", date:"May 2016"}
+      ]),
+      new Crew(2,"Ahmet","Çalık","Turkey","2nd Captain",25,180,"EUR",4500,
+      [{name: "Standards of Training, Certification and Watchkeeping",date: "Dec 2016"},
+       {name: "Continuous Discharge Certificate",date: "Nov 2017"},
+       {name: "Survival Craft and Rescue Boats",date: "Dec 2017"},
+       {name: "Advanced Fire Fighting",date: "Jan 2018"},
+       {name: "Medical Fitness",date: "Nov 2018"}
+      ]),
+      new Crew(3,"David","Beckham","England","3rd Captain",25,150,"EUR",3750,
+      [{name: "Indian Database of Seafarers",date: "Apr 2018"},
+       {name: "Course Completion Certificate",date: "Oct 2019"},
+       {name: "Basic Safety Familiarisation",  date: "Dec 2019"},
+       {name: "Advanced Fire Fighting",  date: "Jan 2020"},
+       {name: "Medical Fitness",  date: "June 2020 "},
+      ]),
+      new Crew(4,"Kevin","Costner","USA","4th Captain",25,120,"EUR",3000,
+      [{  name: "Xth/XIIth mark sheet",  date: "Apr 2020"},
+       {  name: "Continuous Discharge Certificate",  date: "Oct 2021"},
+       {  name: "Ship Spesific Familiarisation",  date: "Apr 2021"},
+       {  name: "Security Familiarisation",  date: "Oct 2021"},
+       {  name: "Medical Fitness",  date: "Nov 2021 "},
+      ]),
+      new Crew(5,"Homer","Simpson","USA","Cooker",25,80,"EUR",2000,
+      [{name: "Italian Pasta Program", date:"May 2007"},
+       {name: "Executive Chef Diploma", date:"Aug 2008"},
+       {name: "College Certificate in Professional Butchery Techniques", date:"Oct 2009"},
+       {name: "Certificate in Health Care Cook", date:"Feb 2010"},
+       {name: "High-End Cuisine Certification Course", date:"May 2011"}
+      ]),
     ]
   }
 

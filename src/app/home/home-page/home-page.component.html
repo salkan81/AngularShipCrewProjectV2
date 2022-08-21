@@ -1,36 +1,46 @@
 
 <div class="container">
-    <h1 style="text-align:center ;">Crew List</h1>
-    <table class="table">
+  <div class="w-100 text-center mb-5 mt-5"><h1>{{'crewList' | translate}}</h1></div>
+    <table class="table table-bordered">
     <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Title</th>
-        <th scope="col">Nationality</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Details</th>
+      <tr class="headRow">
+        <th class="headNo" scope="col">#</th>
+        <th scope="col">{{'firstName' | translate}}</th>
+        <th scope="col">{{'lastName' | translate}}</th>
+        <th scope="col">{{'title' | translate}}</th>
+        <th scope="col">{{'nationality' | translate}}</th>
+        <th scope="col">{{'daysOnBoard' | translate}}</th>
+        <th scope="col">{{'dailyRate' | translate}}</th>
+        <th scope="col">{{'currency' | translate}}</th>
+        <th scope="col">{{'totalIncome' | translate}}</th>
+        <th scope="col">{{'edit' | translate}}</th>
+        <th scope="col">{{'details' | translate}}</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody class="table-group-divider">
-      <tr *ngFor="let item of crewList">
-        <td>{{item.Id}}</td>
+      <tr *ngFor="let item of crewList; let index = index">
+        <th scope="row" [innerText]="index + 1"></th>
         <td>{{item.FirstName}}</td>
         <td>{{item.LastName}}</td>
         <td>{{item.Title}}</td>
         <td>{{item.Nationality}}</td>
-        <td><button class="btn btn-outline-primary" mat-button (click)="openDialog(item.Id)">Edit</button></td>
+        <td>{{item.DaysOnBoard}}</td>
+        <td>{{item.DailyRate}}</td>
+        <td>{{item.Currency}}</td>
+        <td>{{item.TotalIncome}}</td>
+        <td><button class="btn btn-outline-primary" (click)="openDialog(item.Id)">{{'edit' | translate}}</button></td>
         <td><a 
             class="btn btn-outline-success"
             routerLink="./{{ item.Id }}"
-            >Details</a>
+            >{{'detailsPage' | translate}}</a>
         </td>
-        <td><button class="btn btn-outline-danger" mat-button (click)="deleteCrew(item.Id)">Delete</button></td>
+        <td><button class="btn btn-outline-danger" (click)="deleteCrew(item.Id)">{{'delete' | translate}}</button></td>
       </tr>
     </tbody>
   </table>
+  <button style="float: right;" mat-raised-button color="primary" (click)="onCreate()">Add Crew</button>
+  <app-add-pop-up></app-add-pop-up>
 </div>
   
   
