@@ -35,12 +35,30 @@
             routerLink="./{{ item.Id }}"
             >{{'detailsPage' | translate}}</a>
         </td>
-        <td><button class="btn btn-outline-danger" (click)="deleteCrew(item.Id)">{{'delete' | translate}}</button></td>
+        <td><button class="btn btn-outline-danger" (click)="deleteCrew(item.Id);sumEURR()">{{'delete' | translate}}</button></td>
       </tr>
     </tbody>
   </table>
-  <button style="float: right;" mat-raised-button color="primary" (click)="onCreate()">Add Crew</button>
-  <app-add-pop-up></app-add-pop-up>
+  <button style="float: right;" mat-raised-button color="primary" >Add Crew</button>
+  <table class="table table-bordered w-25 text-center mb-5 mt-5">
+    <thead>
+      <tr>
+        <th>Currency</th>
+        <th>Grand Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>EUR</td>
+        <td>{{sumEURR()}}</td>
+      </tr>
+      <tr>
+        <td>USD</td>
+        <td>{{sumUSDD()}}</td>
+      </tr>
+
+    </tbody>
+  </table>
 </div>
   
   

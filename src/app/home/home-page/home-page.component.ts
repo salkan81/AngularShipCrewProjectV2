@@ -11,11 +11,13 @@ import { AddPopUpComponent } from "./add-pop-up/add-pop-up.component";
 })
 export class HomePageComponent implements OnInit {
   
-  crewList:Crew[];
-  crew!:Crew;
+  crewList : Crew[];
+  crew! : Crew;
+  sumEUR : number = 0
+  sumUSD : number = 0
 
   constructor(public dialog:MatDialog,private service:DataService) {
-    this.crewList=service.crewList
+    this.crewList = service.crewList   
   }
 
   openDialog(crewId: number) {
@@ -27,16 +29,25 @@ export class HomePageComponent implements OnInit {
   }
 
   deleteCrew(key: number){
+    console.log("sad",this.service.sumEUR())
     return this.service.deleteCrew(key)
+    
+  }
+  sumEURR(){
+    return this.service.sumEUR()
+  }
+  sumUSDD(){
+    return this.service.sumUSD()
   }
 
   ngOnInit(): void {
   }
+ 
 
   onCreate(){
   this.dialog.open(AddPopUpComponent);
   }
-  
+
 }
 @Component({
   selector: 'app-cert-pop-up',
@@ -47,6 +58,7 @@ export class CertPopUpComponent implements OnInit {
   constructor(public dialog:MatDialog) {}
 
   ngOnInit(): void {
+    
   }
 
   closeDialog(){

@@ -1,20 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Crew } from '../Crew';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   
   crewList:Crew[]
+  summEUR:number
+  summUSD:number
 
-  constructor() {this.crewList=this.getCrewList() }
+  constructor() {
+
+    this.crewList = this.getCrewList() 
+    this.summEUR = this.sumEUR()
+    this.summUSD = this.sumUSD()
+
+    }
 
   getCrewList():Crew[]
   {
     return [
-      new Crew(1,"Katheryn","Winnick","Canada","1st Captain",25,200,"EUR",5000,
+      new Crew(1,"Katheryn","Winnick","Canada","1st Captain",25,200,"USD",5000,
       [{name: "Continuous Discharge Certificate", date:"May 2014"},
        {name: "Indian Database of Seafarers", date:"Aug 2015"},
        {name: "National Certificate of Compatence and endrosement", date:"Oct 2015"},
@@ -35,14 +42,14 @@ export class DataService {
        {name: "Advanced Fire Fighting",  date: "Jan 2020"},
        {name: "Medical Fitness",  date: "June 2020 "},
       ]),
-      new Crew(4,"Kevin","Costner","USA","4th Captain",25,120,"EUR",3000,
+      new Crew(4,"Kevin","Costner","USA","4th Captain",25,120,"USD",3000,
       [{  name: "Xth/XIIth mark sheet",  date: "Apr 2020"},
        {  name: "Continuous Discharge Certificate",  date: "Oct 2021"},
        {  name: "Ship Spesific Familiarisation",  date: "Apr 2021"},
        {  name: "Security Familiarisation",  date: "Oct 2021"},
        {  name: "Medical Fitness",  date: "Nov 2021 "},
       ]),
-      new Crew(5,"Homer","Simpson","USA","Cooker",25,80,"EUR",2000,
+      new Crew(5,"Homer","Simpson","USA","Cooker",25,80,"USD",2000,
       [{name: "Italian Pasta Program", date:"May 2007"},
        {name: "Executive Chef Diploma", date:"Aug 2008"},
        {name: "College Certificate in Professional Butchery Techniques", date:"Oct 2009"},
@@ -61,9 +68,34 @@ export class DataService {
     {return this.crewList.filter(x=>x.Id==crewId)[0].Certificates}
     return
   }
-  deleteCrew(key: number) {
+
+  deleteCrew(key: number) { 
     this.crewList.forEach((value,index)=>{
         if(value.Id==key) this.crewList.splice(index,1); 
     });
-} 
-}
+  }  
+
+  sumEUR(){
+    
+    return this.crewList.filter(x=>x.Currency=="EUR").map(item => item.TotalIncome).reduce((prev, curr) => prev + curr, 0);
+  }
+
+  sumUSD(){
+     
+    return this.crewList.filter(x=>x.Currency=="USD").map(item => item.TotalIncome).reduce((prev, curr) => prev + curr, 0);
+  }
+  
+ 
+  
+  }
+
+  
+
+  
+
+  
+
+  
+
+
+
