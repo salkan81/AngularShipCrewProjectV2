@@ -23,5 +23,9 @@
     "certificateName" : "Certificate Name",
     "certificateDate" : "Certificate Date",
     "close" : "Close",
-    "grandTotal" : "Grand Total"
+    "grandTotal" : "Grand Total",
+    "addCrew" : "Add Crew",
+    "addCertificate" : "Add A Certificate",
+    "save" : "Save"
+
 }

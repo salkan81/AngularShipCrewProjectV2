@@ -23,5 +23,8 @@
     "certificateName" : "Nom du certificat",
     "certificateDate" : "Date du certificat",
     "close" : "Proche",
-    "grandTotal" : "Total"
+    "grandTotal" : "Total",
+    "addCrew" : "Ajouter un équipage",
+    "addCertificate" : "Ajouter un certificat",
+    "save" : "Sauver"
 }

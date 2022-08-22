@@ -23,5 +23,8 @@
     "certificateName" : "Nome Válido",
     "certificateDate" : "Data do certificado",
     "close" : "Perto",
-    "grandTotal" : "Total Geral"
+    "grandTotal" : "Total Geral",
+    "addCrew" : "Adicionar Tripulação",
+    "addCertificate" : "Adicionar certificado",
+    "save" : "Salvar"
 }

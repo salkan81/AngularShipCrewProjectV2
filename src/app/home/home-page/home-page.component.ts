@@ -24,10 +24,6 @@ export class HomePageComponent implements OnInit {
     this.dialog.open(CertPopUpComponent,{data: {id: crewId}});
   }
 
-  AddCrewDialog(Crew: Crew) {
-    this.dialog.open(AddPopUpComponent,{data: {Crew: Crew}});
-  }
-
   deleteCrew(key: number){
     console.log("sad",this.service.sumEUR())
     return this.service.deleteCrew(key)

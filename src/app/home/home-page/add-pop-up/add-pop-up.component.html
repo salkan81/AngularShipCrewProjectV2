@@ -1,72 +1,152 @@
-<ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Employee Form</h4>
-        <button type="button" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-        <form [formGroup]="crewForm" (ngSubmit)="SaveCrew()">
-            <div class="mb-3">
-                <label>Code</label>
-                <div class="input-group">
-                    <input name="code" class="form-control" formControlName="id">
-                </div>
+<div class="container">
+  
+    <div class="row">
+      <form [formGroup]="crewForm" (ngSubmit)="addCrew()">
+        <div class="row mb-3">
+        <div class="col-sm">
+          <label for="Id" class="form-label">Id</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Id"
+            formControlName="Id"
+          />
+        </div>
+          <div class="col-sm">
+          <label for="FirstName" class="form-label">{{'firstName' | translate}}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="FirstName"
+            formControlName="FirstName"
+          />
+        </div>
+        <div class="col-sm">
+          <label for="LastName" class="form-label">{{'lastName' | translate}}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="LastName"
+            formControlName="LastName"
+          />
+        </div>
+        <div class="col-sm">
+          <label for="Title" class="form-label">{{'title' | translate}}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Title"
+            formControlName="Title"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm">
+          <label for="Nationality" class="form-label">{{'nationality' | translate}}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Nationality"
+            formControlName="Nationality"
+          />
+        </div>
+        <div class="col-sm">
+          <label for="DaysOnBoard" class="form-label">{{'daysOnBoard' | translate}}</label>
+          <input
+            type="number"
+            class="form-control"
+            id="DaysOnBoard"
+            formControlName="DaysOnBoard"
+          />
+        </div>
+        <div class="col-sm">
+          <label for="DailyRate" class="form-label">{{'dailyRate' | translate}}</label>
+          <input
+            type="number"
+            class="form-control"
+            id="DailyRate"
+            formControlName="DailyRate"
+          />
+        </div>
+        <div class="col-sm">
+          <label for="TotalIncome" class="form-label">{{'totalIncome' | translate}}</label>
+          <input
+            type="number"
+            class="form-control"
+            id="TotalIncome"
+            formControlName="TotalIncome"
+          />
+        </div>
+        <div class="col-sm">
+          <label class="form-label">{{'currency' | translate}}</label>
+                <select
+                  class="form-select"
+                  formControlName="Currency"
+                  aria-label="Default select example"
+                >
+                  <option value="EUR">EUR</option>
+                  <option value="USD">USD</option>
+                </select>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm">
+            <button
+              type="button"
+              (click)="addCertificateFormGroup()"
+              class="btn btn-primary"
+              style="float: right;"
+            >
+            {{'addCertificate' | translate}}
+            </button>
+          </div>
+        </div>
+      <div class="mb-3" formArrayName="Certificates">
+        
+        <ng-container
+          *ngFor="let certificatesForms of certificatesForms.controls; let i = index"
+        >
+          <div class="row" [formGroupName]="i">
+            <div class="col col-md-5">
+              <div class="mb-3">
+                <label [for]="'name' + i" class="form-label"
+                  >{{'certificateName' | translate}}</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  [id]="'name' + i"
+                  formControlName="name"
+                />
+              </div>
             </div>
-            <div class="mb-3">
-                <label>Name</label>
-                <div class="input-group">
-                    <input name="firstName" class="form-control" formControlName="firstName">
-                </div>
-                <!-- <span *ngIf="name && name.invalid" class="errormessage">Please Enter valid name</span> -->
+            <div class="col col-md-5">
+              <div class="mb-3">
+                <label [for]="'date' + i" class="form-label"
+                  >{{'certificateDate' | translate}}</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  [id]="'date' + i"
+                  formControlName="date"
+                />
+              </div>
             </div>
-            <div class="mb-3">
-                <label>Email</label>
-                <div class="input-group">
-                    <input name="lastName" class="form-control" formControlName="lastName">
-                </div>
-                <!-- <span *ngIf="email && email.invalid" class="errormessage">Please Enter valid email</span> -->
+            <div class="col col md-2">
+              <button
+                class="btn btn-danger mt-4"
+                type="button"
+                (click)="removeCertificateFormGroup(i)"
+              >
+              {{'delete' | translate}}
+              </button>
             </div>
-            <div class="mb-3">
-                <label>Phone</label>
-                <div class="input-group">
-                    <input name="title" class="form-control" formControlName="title">
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label>Phone</label>
-                <div class="input-group">
-                    <input name="nationality" class="form-control" formControlName="nationality">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label>Phone</label>
-                <div class="input-group">
-                    <input name="certificateName" class="form-control" formControlName="certificateName">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label>Phone</label>
-                <div class="input-group">
-                    <input name="certificateDate" class="form-control" formControlName="certificateDate">
-                </div>
-            </div>
-
-            <div class="mb-3">
-
-                <div class="input-group">
-                    <button  type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button style="display: none;" type="button" class="btn btn-outline-dark"
-            (click)="modal.close('Save click')">Save</button>
-    </div>
-</ng-template>
-
-<!-- <button class="btn btn-primary" #popupbtn id="popupbtn" (click)="open()">Add New</button> -->
-
-<hr>
-
-<pre></pre>
+          </div>
+        </ng-container>
+      </div>
+        <button type="submit" class="btn btn-primary">{{'save' | translate}}</button>
+      </form>
+  
+  <div><button class="btn btn-primary" (click)="closeDialog()" style="float: right; width: 70px;">{{'close' | translate}}</button></div>
+</div>
