@@ -12,22 +12,20 @@ import { AddPopUpComponent } from "./add-pop-up/add-pop-up.component";
 export class HomePageComponent implements OnInit {
   
   crewList : Crew[];
-  crew! : Crew;
   sumEUR : number = 0
   sumUSD : number = 0
   firstTotal : number =0
   inputValue: number =0
 
   constructor(public dialog:MatDialog,private service:DataService) {
-    this.crewList = service.crewList   
+    this.crewList = service.crewList
   }
 
   openDialog(crewId: number) {
     this.dialog.open(CertPopUpComponent,{data: {id: crewId}});
   }
 
-  deleteCrew(key: number){
-    console.log("sad",this.service.sumEUR())
+  deleteCrew(key: number){   
     return this.service.deleteCrew(key)
     
   }

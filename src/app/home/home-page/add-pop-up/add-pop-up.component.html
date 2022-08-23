@@ -1,8 +1,7 @@
 <div class="container">
-  
-    <div class="row">
-      <form [formGroup]="crewForm" (ngSubmit)="addCrew()">
-        <div class="row mb-3">
+  <div class="row">
+    <form [formGroup]="crewForm" novalidate (ngSubmit)="addCrew()">
+      <div class="row mb-3">
         <div class="col-sm">
           <label for="Id" class="form-label">Id</label>
           <input
@@ -12,106 +11,198 @@
             formControlName="Id"
           />
         </div>
-          <div class="col-sm">
-          <label for="FirstName" class="form-label">{{'firstName' | translate}}</label>
+        <div class="col-sm">
+          <label for="FirstName" class="form-label">{{
+            "firstName" | translate
+          }}</label>
           <input
             type="text"
             class="form-control"
             id="FirstName"
             formControlName="FirstName"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              FirstName?.invalid && (FirstName?.touched || FirstName?.dirty)
+            "
+          >
+            <div *ngIf="FirstName?.errors?.['required']">
+              First Name can't be emtpy
+            </div>
+          </div>
         </div>
+
         <div class="col-sm">
-          <label for="LastName" class="form-label">{{'lastName' | translate}}</label>
+          <label for="LastName" class="form-label">{{
+            "lastName" | translate
+          }}</label>
           <input
             type="text"
             class="form-control"
             id="LastName"
             formControlName="LastName"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="LastName?.invalid && (LastName?.touched || LastName?.dirty)"
+          >
+            <div *ngIf="LastName?.errors?.['required']">
+              Last Name can't be emtpy
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <label for="Title" class="form-label">{{'title' | translate}}</label>
+          <label for="Title" class="form-label">{{
+            "title" | translate
+          }}</label>
           <input
             type="text"
             class="form-control"
             id="Title"
             formControlName="Title"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="Title?.invalid && (Title?.touched || Title?.dirty)"
+          >
+            <div *ngIf="Title?.errors?.['required']">Title can't be emtpy</div>
+          </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-sm">
-          <label for="Nationality" class="form-label">{{'nationality' | translate}}</label>
+          <label for="Nationality" class="form-label">{{
+            "nationality" | translate
+          }}</label>
           <input
             type="text"
             class="form-control"
             id="Nationality"
             formControlName="Nationality"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              Nationality?.invalid &&
+              (Nationality?.touched || Nationality?.dirty)
+            "
+          >
+            <div *ngIf="Nationality?.errors?.['required']">
+              Nationality can't be emtpy
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <label for="DaysOnBoard" class="form-label">{{'daysOnBoard' | translate}}</label>
+          <label for="DaysOnBoard" class="form-label">{{
+            "daysOnBoard" | translate
+          }}</label>
           <input
             type="number"
             class="form-control"
             id="DaysOnBoard"
             formControlName="DaysOnBoard"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              DaysOnBoard?.invalid &&
+              (DaysOnBoard?.touched || DaysOnBoard?.dirty)
+            "
+          >
+            <div *ngIf="DaysOnBoard?.errors?.['min']">
+              Days On Board can't under zero.
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <label for="DailyRate" class="form-label">{{'dailyRate' | translate}}</label>
+          <label for="DailyRate" class="form-label">{{
+            "dailyRate" | translate
+          }}</label>
           <input
             type="number"
             class="form-control"
             id="DailyRate"
             formControlName="DailyRate"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              DailyRate?.invalid && (DailyRate?.touched || DailyRate?.dirty)
+            "
+          >
+            <div *ngIf="DailyRate?.errors?.['min']">
+              Daily Rate can't under zero.
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <label for="TotalIncome" class="form-label">{{'totalIncome' | translate}}</label>
+          <label for="TotalIncome" class="form-label">{{
+            "totalIncome" | translate
+          }}</label>
           <input
             type="number"
             class="form-control"
             id="TotalIncome"
             formControlName="TotalIncome"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              TotalIncome?.invalid &&
+              (TotalIncome?.touched || TotalIncome?.dirty)
+            "
+          >
+            <div *ngIf="TotalIncome?.errors?.['min']">
+              Total Income can't under zero.
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <label class="form-label">{{'currency' | translate}}</label>
-                <select
-                  class="form-select"
-                  formControlName="Currency"
-                  aria-label="Default select example"
-                >
-                  <option value="EUR">EUR</option>
-                  <option value="USD">USD</option>
-                </select>
+          <label class="form-label">{{ "currency" | translate }}</label>
+          <select
+            class="form-select"
+            formControlName="Currency"
+            aria-label="Default select example"
+          >
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+          </select>
+          <div
+            class="alert alert-danger"
+            *ngIf="Currency?.invalid && (Currency?.touched || Currency?.dirty)"
+          >
+            <div *ngIf="Currency?.errors?.['required']">
+              Currency can't be unselected
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
-          <div class="col-sm">
-            <button
-              type="button"
-              (click)="addCertificateFormGroup()"
-              class="btn btn-primary"
-              style="float: right;"
-            >
-            {{'addCertificate' | translate}}
-            </button>
-          </div>
+        <div class="col-sm">
+          <button
+            type="button"
+            (click)="addCertificateFormGroup()"
+            class="btn btn-primary"
+            style="float: right"
+          >
+            {{ "addCertificate" | translate }}
+          </button>
         </div>
+      </div>
       <div class="mb-3" formArrayName="Certificates">
-        
         <ng-container
-          *ngFor="let certificatesForms of certificatesForms.controls; let i = index"
+          *ngFor="
+            let certificatesForms of certificatesForms.controls;
+            let i = index
+          "
         >
           <div class="row" [formGroupName]="i">
             <div class="col col-md-5">
               <div class="mb-3">
-                <label [for]="'name' + i" class="form-label"
-                  >{{'certificateName' | translate}}</label
-                >
+                <label [for]="'name' + i" class="form-label">{{
+                  "certificateName" | translate
+                }}</label>
                 <input
                   type="text"
                   class="form-control"
@@ -122,9 +213,9 @@
             </div>
             <div class="col col-md-5">
               <div class="mb-3">
-                <label [for]="'date' + i" class="form-label"
-                  >{{'certificateDate' | translate}}</label
-                >
+                <label [for]="'date' + i" class="form-label">{{
+                  "certificateDate" | translate
+                }}</label>
                 <input
                   type="date"
                   class="form-control"
@@ -139,14 +230,30 @@
                 type="button"
                 (click)="removeCertificateFormGroup(i)"
               >
-              {{'delete' | translate}}
+                {{ "delete" | translate }}
               </button>
             </div>
           </div>
         </ng-container>
       </div>
-        <button type="submit" class="btn btn-primary">{{'save' | translate}}</button>
-      </form>
-  
-  <div><button class="btn btn-primary" (click)="closeDialog()" style="float: right; width: 70px;">{{'close' | translate}}</button></div>
+      <button
+        type="submit"
+        [disabled]="crewForm.invalid"
+        class="btn btn-primary"
+      >
+        {{ "save" | translate }}
+      </button>
+      <div class="error" *ngIf="crewForm.hasError('required')">Some text</div>
+    </form>
+
+    <div>
+      <button
+        class="btn btn-primary"
+        (click)="closeDialog()"
+        style="float: right; width: 70px"
+      >
+        {{ "close" | translate }}
+      </button>
+    </div>
+  </div>
 </div>

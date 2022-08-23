@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder} from '@angular/forms';
+import { FormArray, FormBuilder, Validators} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Certificate, Crew } from 'src/app/Crew';
 import { DataService } from 'src/app/services/data.service';
@@ -17,19 +17,45 @@ export class AddPopUpComponent implements OnInit {
 
   crewForm  = this.fb.group({
     Id:[0],
-    FirstName: [''],
-    LastName: [''],
-    Nationality: [''],
-    Title: [''],
-    DaysOnBoard: [0],
-    DailyRate: [0],
-    Currency: [''],
-    TotalIncome: [0],
+    FirstName: ['',[Validators.required]],
+    LastName: ['',Validators.required],
+    Nationality: ['',Validators.required],
+    Title: ['',Validators.required],
+    DaysOnBoard: [0,Validators.min(0)],
+    DailyRate: [0,Validators.min(0)],
+    Currency: ['',Validators.required],
+    TotalIncome: [0,Validators.min(0)],
     Certificates: this.fb.array<Certificate>([]) as FormArray,
   });
 
- 
-  ngOnInit(): void {}
+  get FirstName(){
+    return this.crewForm.get('FirstName');
+  }
+  get LastName(){
+    return this.crewForm.get('LastName');
+  }
+  get Nationality(){
+    return this.crewForm.get('Nationality');
+  }
+  get Title(){
+    return this.crewForm.get('Title');
+  }
+  get DaysOnBoard(){
+    return this.crewForm.get('DaysOnBoard');
+  }
+  get DailyRate(){
+    return this.crewForm.get('DailyRate');
+  }
+  get Currency(){
+    return this.crewForm.get('Currency');
+  }
+  get TotalIncome(){
+    return this.crewForm.get('TotalIncome');
+  }
+
+  ngOnInit(): void {
+    
+  }
  
   get certificatesForms() {
     return this.crewForm.get('Certificates') as FormArray;
@@ -54,8 +80,13 @@ export class AddPopUpComponent implements OnInit {
   addCrew(){
       this.crewList.push(new Crew(this.crewForm.value.Id!,this.crewForm.value.FirstName!,this.crewForm.value.LastName!,this.crewForm.value.Nationality!,this.crewForm.value.Title!,this.crewForm.value.DaysOnBoard!,this.crewForm.value.DailyRate!,this.crewForm.value.Currency!,this.crewForm.value.TotalIncome!,this.crewForm.value.Certificates
       ))
+    
       this.closeDialog()
     }    
+
+    
   }
+
+  
   
 

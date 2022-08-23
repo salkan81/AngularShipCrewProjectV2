@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { Crew } from '../Crew';
 
 @Injectable({
@@ -89,7 +90,14 @@ export class DataService {
     return this.getCrewList()[id-1].TotalIncome
   }
 
+  checkID(id:number){
+  this.crewList.forEach(i=>i.Id==id)
+  return true
   }
+
+  }
+
+  
 
   
 
