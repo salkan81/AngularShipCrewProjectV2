@@ -5,7 +5,7 @@ import { CertPopUpComponent, HomePageComponent } from './home-page.component';
 import { CrewCardPageModule } from '../crew-card-page/crew-card-page.module';
 import { AddPopUpComponent } from './add-pop-up/add-pop-up.component';
 import {MatButtonModule} from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -23,7 +23,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [HomePageComponent, CertPopUpComponent, AddPopUpComponent],
   imports: [
-    CommonModule,RouterModule.forChild(routes),CrewCardPageModule,MatButtonModule,ReactiveFormsModule,HttpClientModule,TranslateModule.forRoot({
+    CommonModule,FormsModule,RouterModule.forChild(routes),CrewCardPageModule,MatButtonModule,ReactiveFormsModule,HttpClientModule,TranslateModule.forRoot({
       defaultLanguage: 'en-US',
       loader: {
         provide: TranslateLoader,

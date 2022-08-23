@@ -12,6 +12,7 @@
         <th scope="col">{{'daysOnBoard' | translate}}</th>
         <th scope="col">{{'dailyRate' | translate}}</th>
         <th scope="col">{{'currency' | translate}}</th>
+        <th scope="col">{{'discount' | translate}}</th>
         <th scope="col">{{'totalIncome' | translate}}</th>
         <th scope="col">{{'edit' | translate}}</th>
         <th scope="col">{{'details' | translate}}</th>
@@ -28,6 +29,7 @@
         <td>{{item.DaysOnBoard}}</td>
         <td>{{item.DailyRate}}</td>
         <td>{{item.Currency}}</td>
+        <td><input type="number" class="form-control" [ngModel]="inputValue" (ngModelChange)="getDiscountedIncome($event,item.Id)"></td>
         <td>{{item.TotalIncome}}</td>
         <td><button class="btn btn-outline-primary" (click)="openDialog(item.Id)">{{'edit' | translate}}</button></td>
         <td><a 
@@ -60,5 +62,8 @@
     </tbody>
   </table>
 </div>
+<div>
+
+
   
   

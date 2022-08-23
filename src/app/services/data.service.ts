@@ -85,6 +85,10 @@ export class DataService {
     return this.crewList.filter(x=>x.Currency=="USD").map(item => item.TotalIncome).reduce((prev, curr) => prev + curr, 0);
   }
 
+  getTotalIncome(id : number){
+    return this.getCrewList()[id-1].TotalIncome
+  }
+
   }
 
   

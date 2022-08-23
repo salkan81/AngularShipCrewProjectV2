@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog,MatDialogConfig} from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { Crew } from "src/app/Crew";
 import { DataService } from "src/app/services/data.service";
 import { AddPopUpComponent } from "./add-pop-up/add-pop-up.component";
@@ -15,6 +15,8 @@ export class HomePageComponent implements OnInit {
   crew! : Crew;
   sumEUR : number = 0
   sumUSD : number = 0
+  firstTotal : number =0
+  inputValue: number =0
 
   constructor(public dialog:MatDialog,private service:DataService) {
     this.crewList = service.crewList   
@@ -37,11 +39,16 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
   }
  
-
   onCreate(){
   this.dialog.open(AddPopUpComponent);
+  }
+
+  getDiscountedIncome(e:any,id:number) { 
+    this.firstTotal = this.service.getTotalIncome(id)
+    this.service.getCrew(id).TotalIncome = this.firstTotal*((100-(e))/100)
   }
 
 }

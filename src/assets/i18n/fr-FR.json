@@ -26,5 +26,7 @@
     "grandTotal" : "Total",
     "addCrew" : "Ajouter un équipage",
     "addCertificate" : "Ajouter un certificat",
-    "save" : "Sauver"
+    "save" : "Sauver",
+    "discount" : "Remise"
+    
 }
