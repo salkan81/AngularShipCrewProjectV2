@@ -18,7 +18,7 @@ export class AddPopUpComponent implements OnInit {
   }
 
   crewForm  = this.fb.group({
-    Id : [0,[Validators.required],[IdValidator.createValidator(this.service)]] ,
+    Id : [1,[Validators.required,Validators.min(1)],[IdValidator.createValidator(this.service)]] ,
     FirstName: ['',[Validators.required]],
     LastName: ['',Validators.required],
     Nationality: ['',Validators.required],

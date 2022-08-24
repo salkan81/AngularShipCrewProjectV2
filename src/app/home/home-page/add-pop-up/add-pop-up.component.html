@@ -16,6 +16,9 @@
           >
             Id already exists.
           </div>
+          <div class="alert alert-danger" *ngIf="Id?.errors?.['min']">
+            Id can't under one.
+          </div>
         </div>
 
         <div class="col-sm">
