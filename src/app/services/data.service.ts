@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { of } from 'rxjs/internal/observable/of';
+import { delay } from 'rxjs/internal/operators/delay';
 import { Crew } from '../Crew';
 
 @Injectable({
@@ -90,12 +91,17 @@ export class DataService {
     return this.getCrewList()[id-1].TotalIncome
   }
 
-  checkID(id:number){
-  this.crewList.forEach(i=>i.Id==id)
-  return true
+  existingId()
+  {
+    return this.crewList.map(a=>a.Id)
   }
-
+  
+  checkIfIdExists(value: number) {
+    return of(this.existingId().some((a) => a === value)).pipe(
+      delay(1000)
+    );
   }
+}
 
   
 

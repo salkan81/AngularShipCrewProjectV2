@@ -10,7 +10,14 @@
             id="Id"
             formControlName="Id"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="Id?.errors?.['IdAlreadyExists']"
+          >
+            Id already exists.
+          </div>
         </div>
+
         <div class="col-sm">
           <label for="FirstName" class="form-label">{{
             "firstName" | translate

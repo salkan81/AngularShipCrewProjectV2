@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators} from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, Validators} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Certificate, Crew } from 'src/app/Crew';
 import { DataService } from 'src/app/services/data.service';
+import { IdValidator } from '../../Custom Validations/idValidator';
+
 
 @Component({
   selector: 'app-add-pop-up',
@@ -16,7 +18,7 @@ export class AddPopUpComponent implements OnInit {
   }
 
   crewForm  = this.fb.group({
-    Id:[0],
+    Id : [0,[Validators.required],[IdValidator.createValidator(this.service)]] ,
     FirstName: ['',[Validators.required]],
     LastName: ['',Validators.required],
     Nationality: ['',Validators.required],
@@ -28,6 +30,9 @@ export class AddPopUpComponent implements OnInit {
     Certificates: this.fb.array<Certificate>([]) as FormArray,
   });
 
+  get Id(){
+    return this.crewForm.get('Id');
+  }
   get FirstName(){
     return this.crewForm.get('FirstName');
   }
@@ -83,7 +88,6 @@ export class AddPopUpComponent implements OnInit {
     
       this.closeDialog()
     }    
-
     
   }
 
